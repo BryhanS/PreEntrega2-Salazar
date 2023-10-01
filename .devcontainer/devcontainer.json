@@ -24,6 +24,16 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
+	"forwardPorts": [3000],
+	"portsAttributes": {
+	  "3000": {
+		"label": "React App",
+		"onAutoForward": "openPreview"
+	  }
+	},
+	"updateContentCommand": "npm install",
+	"postAttachCommand": "npm run dev",
+  
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "yarn install",
 
