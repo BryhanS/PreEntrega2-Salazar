@@ -1,9 +1,11 @@
+import React from "react";
+import CartWidget from "../CartWidget/CartWidget";
 const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
         <a className="navbar-brand logo-box" href="../index.html">
-          <img className="logo-img" src="../assets/img/logo.png" alt="logo" />
+          <img className="logo-img" src="/img/logo.png" alt="logo" />
           <span>Santa Maria</span>
         </a>
         <button
@@ -34,10 +36,12 @@ const NavBar = () => {
               <a className="nav-link">Tienda</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link">Blog</a>
+              <a className="nav-link">Contacto</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link">Contacto</a>
+              <a className="nav-link">
+                <CartWidget />
+              </a>
             </li>
           </ul>
         </div>

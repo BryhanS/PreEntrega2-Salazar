@@ -1,8 +1,11 @@
-# React + Vite
+# Proyecto Web Panaderia Santa Maria adaptado para React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto de React + Vite
 
-Currently, two official plugins are available:
+- Se importo Bootstrap en el archivo index.scss junto con los componentes de scss
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Se adiciono todas las imagenes requeridas para el proyecto en la carpeta public/img
+
+- Se uso devcontainer para la creacion de este proyecto
+
+- Se ingreso Header, Main y Footer como componentes
