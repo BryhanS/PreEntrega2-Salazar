@@ -1,0 +1,29 @@
+//import base
+
+@use "./scss/base/resets";
+@use "./scss/base/global";
+@use "./scss/base/utility";
+
+//import components
+
+@use "./scss/components/navbar";
+@use "./scss/components/carousel";
+@use "./scss/components/card";
+@use "./scss/components/team-card";
+@use "./scss/components/video";
+@use "./scss/components/article";
+@use "./scss/components/location";
+@use "./scss/components/footer";
+@use "./scss/components/team-card-animation";
+@use "./scss/components/shake-animation";
+@use "./scss/components/cart";
+@use "./scss/components/cart-list";
+@use "./scss/components/popup";
+
+//import layout
+@use "./scss/layout/index";
+@use "./scss/layout/about-us";
+@use "./scss/layout/category";
+@use "./scss/layout/blog";
+@use "./scss/layout/contact-us";
+@use "./scss/layout/media-queries";

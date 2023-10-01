@@ -1,0 +1,16 @@
+// _resets.scss
+@use './variable' as v;
+@import './utility';
+
+
+
+html {
+    font-size: 62.50%;
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}

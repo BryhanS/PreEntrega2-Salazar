@@ -1,0 +1,81 @@
+// _footer.scss
+@use '../base/variable' as v;
+
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    background-color: v.$background-primary;
+    font-size: 2rem;
+    margin: 20px auto auto auto;
+    color: v.$text-primary;
+    padding: 25px;
+}
+
+
+.footer {
+
+    &-left {
+        div {
+
+            ul {
+                li {
+                    display: flex;
+                    padding: .8rem;
+                    align-items: center;
+
+                    a {
+                        margin-left: 2rem;
+                        color: v.$text-primary;
+                    }
+                }
+
+            }
+        }
+    }
+
+    &-center {
+        div {
+            p {
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+        }
+    }
+
+    &-right {
+        div {
+            input {
+                width: 100%;
+                height: 30px;
+                border: none;
+
+                &::placeholder {
+                    padding-left: 1rem;
+                    font-size: 1.5rem;
+                }
+
+            }
+
+            div {
+                display: flex;
+                justify-content: center;
+                margin-top: 2rem;
+                gap: 2rem;
+            }
+
+            label {
+                display: block;
+                text-align: center;
+                font-weight: bold;
+                font-style: italic;
+                font-size: 3.5rem;
+
+            }
+        }
+    }
+
+
+
+}
