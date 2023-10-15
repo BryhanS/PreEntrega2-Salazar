@@ -1,4 +1,4 @@
-# Proyecto Web Panaderia Santa Maria adaptado para React
+# Proyecto Web Panaderia Santa Maria adaptado para React + Vite + SASS
 
 Proyecto de React + Vite
 
@@ -9,3 +9,9 @@ Proyecto de React + Vite
 - Se uso devcontainer para la creacion de este proyecto
 
 - Se ingreso Header, Main y Footer como componentes
+
+Comando para usar Vite
+
+```
+npm run dev
+```

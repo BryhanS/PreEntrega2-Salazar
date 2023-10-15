@@ -38,12 +38,8 @@ const NavBar = () => {
             <li className="nav-item">
               <a className="nav-link">Contacto</a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link">
-                <CartWidget />
-              </a>
-            </li>
           </ul>
+          <CartWidget />
         </div>
       </div>
     </nav>
