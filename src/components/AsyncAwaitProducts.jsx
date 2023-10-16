@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import ProductItem from "./ProductItem";
 
-function AsyncAwaitProducts() {
+const AsyncAwaitProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -21,20 +22,11 @@ function AsyncAwaitProducts() {
       <h1>Catalogo de Productos</h1>
       <div id="shop" className="card-container">
         {products.map((item) => (
-          <Product item={item} key={item.id} />
+          <ProductItem item={item} key={item.id} />
         ))}
       </div>
     </>
   );
 }
-
-function Product({ item }) {
-  return (
-    <div className="card-body">
-      <img src={`./img/${item.imagen}`} alt={item.altinf} />
-      <span>{item.nombre}</span>
-      <button type="button">agregar al carrito</button>
-    </div>
-  );
-}
 export default AsyncAwaitProducts;
+

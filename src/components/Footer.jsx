@@ -1,4 +1,3 @@
-import React from "react";
 import GeoLocationsvg from "../Icons/GeoLocationsvg";
 import Emailsvg from "../Icons/Emailsvg";
 import Phonesvg from "../Icons/Phonesvg";
