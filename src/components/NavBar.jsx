@@ -1,5 +1,5 @@
 import CartWidget from "./CartWidget";
-const NavBar = () => {
+const NavBar = ({ onCartOpen }) => {
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
@@ -38,7 +38,7 @@ const NavBar = () => {
               <a className="nav-link">Contacto</a>
             </li>
           </ul>
-          <CartWidget />
+          <CartWidget onCartOpen={onCartOpen} />
         </div>
       </div>
     </nav>

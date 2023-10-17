@@ -1,7 +1,7 @@
 import Cartsvg from "../Icons/Cartsvg";
-const CartWidget = () => {
+const CartWidget = ({ onCartOpen }) => {
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: "relative" }} onClick={onCartOpen}>
       <Cartsvg />
       <strong
         style={{

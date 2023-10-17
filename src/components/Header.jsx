@@ -1,9 +1,9 @@
 import NavBar from "./NavBar";
 
-const Header = () => {
+const Header = ({ onCartOpen }) => {
   return (
     <header className="header-container sticky-top">
-      <NavBar />
+      <NavBar onCartOpen={onCartOpen} />
     </header>
   );
 };
