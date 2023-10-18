@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const CartList = ({ item }) => {
   return (
     <li>
@@ -17,8 +18,8 @@ const CartList = ({ item }) => {
           +
         </button>
       </div>
-      <p className="precio">{item.precio.toFixed(2)}</p>
-      <p className="monto">{(item.precio * item.cantidad).toFixed(2)}</p>
+      <p className="precio">s/ {item.precio.toFixed(2)}</p>
+      <p className="monto">s/ {(item.precio * item.cantidad).toFixed(2)}</p>
     </li>
   );
 };
