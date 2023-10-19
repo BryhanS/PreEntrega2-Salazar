@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [products, setProducts] = useState([]);
+  const [productListArray, setProductListArray] = useState([])
 
   useEffect(() => {
     try {
@@ -22,6 +23,12 @@ function App() {
     }
   }, []);
 
+  function handleSelectionProduct(item){
+    console.log(item)
+
+    setProductListArray((productListArray) => [...productListArray,item])
+    console.log(productListArray)
+  }
   function handleOpenCart() {
     setIsCartOpen((isCartOpen) => !isCartOpen);
   }
@@ -31,8 +38,8 @@ function App() {
       <Header onCartOpen={handleOpenCart} />
       <main>
         <section className="product-section">
-          <ProductBody onProducts={products} />
-          {isCartOpen && <CartBody />}
+          <ProductBody onProducts={products} onSelectionProduct={handleSelectionProduct} />
+          {isCartOpen && <CartBody onCartList={productListArray} />}
         </section>
       </main>
       <Footer />

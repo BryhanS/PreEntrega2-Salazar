@@ -12,6 +12,7 @@ const CartList = ({ item }) => {
           className="item-count form-control"
           min="0"
           max="100"
+          value={item.cantidad}
           disabled
         />
         <button className="plus-item btn btn-primary input-group-addon">
