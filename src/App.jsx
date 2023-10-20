@@ -24,11 +24,12 @@ function App() {
   }, []);
 
   function handleSelectionProduct(item){
-    console.log(item)
 
-    setProductListArray((productListArray) => [...productListArray,item])
-    console.log(productListArray)
+    productListArray.find(product=> product.id === item.id) ? null : setProductListArray((arrayList) => [...arrayList,item])
+    if (!isCartOpen) setIsCartOpen(true)
+
   }
+
   function handleOpenCart() {
     setIsCartOpen((isCartOpen) => !isCartOpen);
   }
