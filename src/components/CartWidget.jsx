@@ -1,5 +1,5 @@
 import Cartsvg from "../Icons/Cartsvg";
-const CartWidget = ({ onCartOpen }) => {
+const CartWidget = ({ onCartOpen, onQuantityCart }) => {
   return (
     <div style={{ position: "relative" }} onClick={onCartOpen}>
       <Cartsvg />
@@ -11,7 +11,7 @@ const CartWidget = ({ onCartOpen }) => {
           fontSize: "large",
         }}
       >
-        3
+        {onQuantityCart}
       </strong>
     </div>
   );

@@ -8,7 +8,8 @@ import { useState, useEffect } from "react";
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [products, setProducts] = useState([]);
-  const [productListArray, setProductListArray] = useState([])
+  const [productListArray, setProductListArray] = useState([]);
+  const [quantityCart, setQuantityCart] = useState("");
 
   useEffect(() => {
     try {
@@ -23,11 +24,12 @@ function App() {
     }
   }, []);
 
-  function handleSelectionProduct(item){
-
-    productListArray.find(product=> product.id === item.id) ? null : setProductListArray((arrayList) => [...arrayList,item])
-    if (!isCartOpen) setIsCartOpen(true)
-
+  function handleSelectionProduct(item) {
+    productListArray.find((product) => product.id === item.id)
+      ? null
+      : setProductListArray((arrayList) => [...arrayList, item]);
+    if (!isCartOpen) setIsCartOpen(true);
+    setQuantityCart(productListArray.length + 1);
   }
 
   function handleOpenCart() {
@@ -36,10 +38,13 @@ function App() {
 
   return (
     <>
-      <Header onCartOpen={handleOpenCart} />
+      <Header onCartOpen={handleOpenCart} onQuantityCart={quantityCart} />
       <main>
         <section className="product-section">
-          <ProductBody onProducts={products} onSelectionProduct={handleSelectionProduct} />
+          <ProductBody
+            onProducts={products}
+            onSelectionProduct={handleSelectionProduct}
+          />
           {isCartOpen && <CartBody onCartList={productListArray} />}
         </section>
       </main>
