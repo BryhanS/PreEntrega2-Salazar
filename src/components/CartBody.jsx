@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import CartList from "./CartList";
-const CartBody = ({onCartList}) => {
-
+const CartBody = ({ onCartList }) => {
   return (
     <div id="idCart" className="cart">
       <h2>Tus compras</h2>

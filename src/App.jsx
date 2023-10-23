@@ -1,36 +1,16 @@
-import "./App.scss";
-import Header from "./components/Header";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState } from "react";
+
+import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import ProductBody from "./components/ProductBody";
-import CartBody from "./components/CartBody";
-import { useState, useEffect } from "react";
+import Home from "./pages/Home";
+import Category from "./pages/CategoryShop/Category";
+import AboutUs from "./pages/AboutUs";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [products, setProducts] = useState([]);
-  const [productListArray, setProductListArray] = useState([]);
   const [quantityCart, setQuantityCart] = useState("");
-
-  useEffect(() => {
-    try {
-      const askProducts = async () => {
-        const answer = await fetch("/src/db/products.json");
-        const data = await answer.json();
-        setProducts(data);
-      };
-      askProducts();
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
-
-  function handleSelectionProduct(item) {
-    productListArray.find((product) => product.id === item.id)
-      ? null
-      : setProductListArray((arrayList) => [...arrayList, item]);
-    if (!isCartOpen) setIsCartOpen(true);
-    setQuantityCart(productListArray.length + 1);
-  }
 
   function handleOpenCart() {
     setIsCartOpen((isCartOpen) => !isCartOpen);
@@ -38,17 +18,16 @@ function App() {
 
   return (
     <>
-      <Header onCartOpen={handleOpenCart} onQuantityCart={quantityCart} />
-      <main>
-        <section className="product-section">
-          <ProductBody
-            onProducts={products}
-            onSelectionProduct={handleSelectionProduct}
-          />
-          {isCartOpen && <CartBody onCartList={productListArray} />}
-        </section>
-      </main>
-      <Footer />
+      <BrowserRouter>
+        <NavBar onCartOpen={handleOpenCart} onQuantityCart={quantityCart} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/category" element={<Category />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </>
   );
 }
