@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import ItemListContainer from "./ItemListContainer";
 import { getProducts } from "../../asyncmock";
 
+import ItemDetailContainer from "./ItemDetailContainer";
+
 const Category = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [products, setProducts] = useState([]);
@@ -36,6 +38,7 @@ const Category = () => {
         />
         {isCartOpen && <CartBody onCartList={productListArray} />}
       </section>
+      <ItemDetailContainer />
     </main>
   );
 };
