@@ -1,42 +1,44 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getProducts, getProductsByCategory } from "../../asyncmock";
 import ItemListContainer from "./ItemListContainer";
-import { getProducts } from "../../asyncmock";
-
-import ItemDetailContainer from "./ItemDetailContainer";
 
 const Category = () => {
-  const [isCartOpen, setIsCartOpen] = useState(false);
+  // const [isCartOpen, setIsCartOpen] = useState(false);
   const [products, setProducts] = useState([]);
-  const [productListArray, setProductListArray] = useState([]);
-  const [quantityCart, setQuantityCart] = useState("");
+  // const [productListArray, setProductListArray] = useState([]);
 
-  function handleOpenCart() {
-    setIsCartOpen((isCartOpen) => !isCartOpen);
-  }
+  const { idcategory } = useParams();
+  // function handleOpenCart() {
+  //   setIsCartOpen((isCartOpen) => !isCartOpen);
+  // }
 
+  // function handleOpenCart() {
+  //   setIsCartOpen((isCartOpen) => !isCartOpen);
+  // }
   useEffect(() => {
-    getProducts().then((result) => setProducts(result));
-  }, []);
+    const funtionProducts = idcategory === 'all' ? getProducts : getProductsByCategory;
 
-  function handleSelectionProduct(item) {
-    productListArray.find((product) => product.id === item.id)
-      ? null
-      : setProductListArray((arrayList) => [...arrayList, item]);
-    if (!isCartOpen) setIsCartOpen(true);
-    setQuantityCart(productListArray.length + 1);
-  }
+    funtionProducts(idcategory)
+      .then(res => setProducts(res));
 
-  function handleOpenCart() {
-    setIsCartOpen((isCartOpen) => !isCartOpen);
-  }
+  }, [idcategory]);
+
+
+  // function handleSelectionProduct(item) {
+  //   productListArray.find((product) => product.id === item.id)
+  //     ? null
+  //     : setProductListArray((arrayList) => [...arrayList, item]);
+  //   if (!isCartOpen) setIsCartOpen(true);
+  // }
+
   return (
     <main>
       <section className="product-section">
         <ItemListContainer
           onProducts={products}
-          onSelectionProduct={handleSelectionProduct}
         />
-        {isCartOpen && <CartBody onCartList={productListArray} />}
+        {/* {isCartOpen && <CartBody onCartList={productListArray} />} */}
       </section>
     </main>
   );

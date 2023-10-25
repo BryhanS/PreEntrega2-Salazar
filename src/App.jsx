@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState } from "react";
 
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
@@ -10,22 +9,22 @@ import ContactUs from "./pages/ContactUs";
 import ItemDetailContainer from "./pages/CategoryShop/ItemDetailContainer";
 
 function App() {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [quantityCart, setQuantityCart] = useState("");
+  // const [isCartOpen, setIsCartOpen] = useState(false);
+  // const [quantityCart, setQuantityCart] = useState("");
 
-  function handleOpenCart() {
-    setIsCartOpen((isCartOpen) => !isCartOpen);
-  }
+  // function handleOpenCart() {
+  //   setIsCartOpen((isCartOpen) => !isCartOpen);
+  // }
 
   return (
     <>
       <BrowserRouter>
-        <NavBar onCartOpen={handleOpenCart} onQuantityCart={quantityCart} />
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/category" element={<Category />} />
-          <Route path="/category/:id" element={<ItemDetailContainer />} />
+          <Route path="/tienda/:idcategory" element={<Category />} />
+          <Route path="/product/:id" element={<ItemDetailContainer />} />
           <Route path="/contact-us" element={<ContactUs />} />
         </Routes>
         <Footer />

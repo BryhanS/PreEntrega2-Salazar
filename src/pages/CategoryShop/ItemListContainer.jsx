@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import ItemList from "./ItemList";
 
-const ItemListContainer = ({ onProducts, onSelectionProduct }) => {
+const ItemListContainer = ({ onProducts }) => {
   return (
     <>
       <h1>Catalogo de Productos</h1>
@@ -10,7 +10,6 @@ const ItemListContainer = ({ onProducts, onSelectionProduct }) => {
           <ItemList
             {...item}
             key={item.id}
-            onSelectionProduct={onSelectionProduct}
           />
         ))}
       </div>

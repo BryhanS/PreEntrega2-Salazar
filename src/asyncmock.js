@@ -129,10 +129,10 @@ export const getProduct = (id) => {
 export const getProductsByCategory = (categoryName) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      const category = myProducts.find(
+      const newCategory = myProducts.filter(
         (cateries) => cateries.category === categoryName
       );
-      resolve(category);
-    },500);
+      resolve(newCategory);
+    }, 500);
   });
 };

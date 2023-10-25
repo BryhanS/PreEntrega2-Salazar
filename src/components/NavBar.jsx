@@ -1,7 +1,7 @@
 import CartWidget from "./CartWidget";
 import { Link, NavLink } from "react-router-dom";
 
-const NavBar = ({ onCartOpen, onQuantityCart }) => {
+const NavBar = () => {
   return (
     <header className="header-container sticky-top">
       <nav className="navbar navbar-expand-lg">
@@ -36,10 +36,15 @@ const NavBar = ({ onCartOpen, onQuantityCart }) => {
                   Nosotros
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/category" className="nav-link">
+              <li className="nav-item dropdown">
+                <NavLink to="/category" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                   Tienda
                 </NavLink>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><Link className="dropdown-item" to="/tienda/all">All</Link></li>
+                  <li><Link className="dropdown-item" to="/tienda/diario">Diarios</Link></li>
+                  <li><Link className="dropdown-item" to="/tienda/especiales">Especiales</Link></li>
+                </ul>
               </li>
               <li className="nav-item">
                 <NavLink to="/contact-us" className="nav-link">
@@ -47,10 +52,7 @@ const NavBar = ({ onCartOpen, onQuantityCart }) => {
                 </NavLink>
               </li>
             </ul>
-            <CartWidget
-              onCartOpen={onCartOpen}
-              onQuantityCart={onQuantityCart}
-            />
+            <CartWidget />
           </div>
         </div>
       </nav>
