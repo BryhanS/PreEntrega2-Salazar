@@ -38,7 +38,6 @@ const Category = () => {
         />
         {isCartOpen && <CartBody onCartList={productListArray} />}
       </section>
-      <ItemDetailContainer />
     </main>
   );
 };

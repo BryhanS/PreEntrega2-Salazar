@@ -8,7 +8,7 @@ const ItemListContainer = ({ onProducts, onSelectionProduct }) => {
       <div id="shop" className="card-container">
         {onProducts.map((item) => (
           <ItemList
-            item={item}
+            {...item}
             key={item.id}
             onSelectionProduct={onSelectionProduct}
           />

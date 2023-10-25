@@ -1,10 +1,14 @@
 /* eslint-disable react/prop-types */
-const ItemList = ({ item, onSelectionProduct }) => {
+import { Link } from "react-router-dom";
+const ItemList = ({ id,nombre, imagen, altinf }) => {
   return (
     <div className="card-body">
-      <img src={`./img/${item.imagen}`} alt={item.altinf} />
-      <span>{item.nombre}</span>
+      <img src={`./img/${imagen}`} alt={altinf} />
+      <span>{nombre}</span>
+
+    <Link to={`/category/${id}`}>
       <button>Ver Detalle</button>
+    </Link>
     </div>
   );
 };

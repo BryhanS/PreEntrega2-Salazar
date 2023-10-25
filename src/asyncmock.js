@@ -133,6 +133,6 @@ export const getProductsByCategory = (categoryName) => {
         (cateries) => cateries.category === categoryName
       );
       resolve(category);
-    });
+    },500);
   });
 };

@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Category from "./pages/CategoryShop/Category";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
+import ItemDetailContainer from "./pages/CategoryShop/ItemDetailContainer";
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -24,8 +25,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/category" element={<Category />} />
-          <Route path="/category/especial" element={<Category />} />
-          <Route path="/category/diario" element={<Category />} />
+          <Route path="/category/:id" element={<ItemDetailContainer />} />
           <Route path="/contact-us" element={<ContactUs />} />
         </Routes>
         <Footer />
