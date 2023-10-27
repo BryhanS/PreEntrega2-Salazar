@@ -9,7 +9,7 @@ const ContactUs = () => {
             <h2>¿tienes alguna pregunta? !Estamos encantados de ayudarte!</h2>
 
             <div>
-              <label for="name">Nombre</label>
+              <label htmlFor="name">Nombre</label>
               <input
                 type="text"
                 name="name"
@@ -19,7 +19,7 @@ const ContactUs = () => {
             </div>
 
             <div>
-              <label for="telfono">Telefono</label>
+              <label htmlFor="telfono">Telefono</label>
               <input
                 type="tel"
                 name="telefono"
@@ -29,7 +29,7 @@ const ContactUs = () => {
             </div>
 
             <div>
-              <label for="correo">Correo</label>
+              <label htmlFor="correo">Correo</label>
               <input
                 type="email"
                 name="mail"
@@ -39,7 +39,7 @@ const ContactUs = () => {
             </div>
 
             <div>
-              <label for="mensaje">Mensaje</label>
+              <label htmlFor="mensaje">Mensaje</label>
               <textarea
                 name="mensaje"
                 id="mensaje"
