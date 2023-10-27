@@ -1,4 +1,14 @@
+import ItemListContainer from "./CategoryShop/ItemListContainer";
+import { useEffect, useState } from "react";
+import { getProductsTop } from "../asyncmock";
+
 const Home = () => {
+  const [productsTop, setProductsTop] = useState([]);
+
+  useEffect(() => {
+    getProductsTop(4).then((res) => setProductsTop(res));
+  }, []);
+
   return (
     <main>
       <section id="carouselExampleIndicators" className="carousel slide">
@@ -74,32 +84,9 @@ const Home = () => {
       </section>
 
       <section className="product-section">
-        <h1>Lo mas vendido</h1>
-
-        <div className="card-container">
-          <div className="card-body">
-            <img src="./img/product-1.png" alt="Pan especial" />
-            <span>Pan especial</span>
-            <a href="">Detalles</a>
-          </div>
-
-          <div className="card-body">
-            <img src="./img/product-2.png" alt="Pan Bagette" />
-            <span>Bagette</span>
-            <a href="">Detalles</a>
-          </div>
-
-          <div className="card-body">
-            <img src="./img/product-3.png" alt="Pan Yema" />
-            <span>Yema</span>
-            <a href="">Detalles</a>
-          </div>
-          <div className="card-body">
-            <img src="./img/product-4.png" alt="Pan de Molde Artesanal" />
-            <span>Molde Artesanal</span>
-            <a href="">Detalles</a>
-          </div>
-        </div>
+        <ItemListContainer onProducts={productsTop}>
+          lo mas vendido
+        </ItemListContainer>
       </section>
 
       <section className="section-video">

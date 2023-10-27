@@ -136,3 +136,12 @@ export const getProductsByCategory = (categoryName) => {
     }, 500);
   });
 };
+
+export const getProductsTop = (id) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const newTop = myProducts.filter((top) => top.id <= id);
+      resolve(newTop);
+    }, 500);
+  });
+};

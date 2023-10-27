@@ -17,13 +17,11 @@ const Category = () => {
   //   setIsCartOpen((isCartOpen) => !isCartOpen);
   // }
   useEffect(() => {
-    const funtionProducts = idcategory === 'all' ? getProducts : getProductsByCategory;
+    const funtionProducts =
+      idcategory === "all" ? getProducts : getProductsByCategory;
 
-    funtionProducts(idcategory)
-      .then(res => setProducts(res));
-
+    funtionProducts(idcategory).then((res) => setProducts(res));
   }, [idcategory]);
-
 
   // function handleSelectionProduct(item) {
   //   productListArray.find((product) => product.id === item.id)
@@ -35,9 +33,12 @@ const Category = () => {
   return (
     <main>
       <section className="product-section">
-        <ItemListContainer
-          onProducts={products}
-        />
+        <ItemListContainer onProducts={products}>
+          {idcategory === "all"
+            ? "todo nuestro catalogo"
+            : `nuestro catalogo ${idcategory}`}
+        </ItemListContainer>
+
         {/* {isCartOpen && <CartBody onCartList={productListArray} />} */}
       </section>
     </main>
