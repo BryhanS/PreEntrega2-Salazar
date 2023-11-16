@@ -1,6 +1,7 @@
 import ItemListContainer from "./CategoryShop/ItemListContainer";
 import { useEffect, useState } from "react";
 import { getProductsTop } from "../asyncmock";
+// import Main from "../components/Main";
 
 const Home = () => {
   const [productsTop, setProductsTop] = useState([]);
@@ -10,7 +11,8 @@ const Home = () => {
   }, []);
 
   return (
-    <main>
+
+    <>
       <section id="carouselExampleIndicators" className="carousel slide">
         <div className="carousel-indicators">
           <button
@@ -111,7 +113,9 @@ const Home = () => {
           exigentes.
         </p>
       </section>
-    </main>
+
+    </>
+
   );
 };
 

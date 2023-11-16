@@ -1,6 +1,6 @@
 const ContactUs = () => {
   return (
-    <main>
+    <>
       <section className="form-section">
         <h1>Contactanos</h1>
 
@@ -88,7 +88,7 @@ const ContactUs = () => {
           </p>
         </div>
       </section> */}
-    </main>
+    </>
   );
 };
 

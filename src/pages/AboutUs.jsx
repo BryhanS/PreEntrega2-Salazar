@@ -1,6 +1,6 @@
 const AboutUs = () => {
   return (
-    <main>
+    <>
       <section className="section-team">
         <h1>Nosotros</h1>
 
@@ -83,7 +83,7 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 };
 

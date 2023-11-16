@@ -1,8 +1,9 @@
-import CartWidget from "./CartWidget";
 import { Link, NavLink } from "react-router-dom";
 
-const NavBar = () => {
+// eslint-disable-next-line react/prop-types
+const NavBar = ({children}) => {
   return (
+
     <header className="header-container sticky-top">
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
@@ -52,11 +53,14 @@ const NavBar = () => {
                 </NavLink>
               </li>
             </ul>
-            <CartWidget />
+
+            {children}
+            {/* <CartWidget onOpenCart={onOpenCart}/> */}
           </div>
         </div>
       </nav>
     </header>
+
   );
 };
 
