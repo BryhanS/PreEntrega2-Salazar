@@ -1,7 +1,11 @@
 import Cartsvg from "../Icons/Cartsvg";
-const CartWidget = ({isCartOpen, onIsCartOpen}) => {
+import { useContext } from "react";
+import {OpenCartContext} from "../context/OpenCartContext";
+const CartWidget = () => {
+
+  const {isCartOpen,handleOpenCart} = useContext(OpenCartContext)
   return (
-    <div style={{ position: "relative" }} onClick={()=> onIsCartOpen(isCartOpen)}>
+    <div style={{ position: "relative" }} onClick={()=> handleOpenCart(isCartOpen)}>
       <Cartsvg />
       <strong
         style={{

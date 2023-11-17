@@ -9,29 +9,60 @@ import ContactUs from "./pages/ContactUs";
 import ItemDetailContainer from "./pages/CategoryShop/ItemDetailContainer";
 import CartWidget from "./components/CartWidget";
 import Main from "./components/Main";
+import { OpenCartProvider } from "./context/OpenCartContext";
 
 function App() {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  // const [quantityCart, setQuantityCart] = useState("");
-
-  function handleOpenCart() {
-    setIsCartOpen((isCartOpen) => !isCartOpen);
-  }
-
   return (
     <>
       <BrowserRouter>
-        <NavBar onOpenCart={handleOpenCart} >
-          <CartWidget isCartOpen={isCartOpen} onIsCartOpen={handleOpenCart} /> 
-        </NavBar>
-        <Routes>
-          <Route path="/" element={<Main isCartOpen={isCartOpen}><Home /> </Main>} />
-          <Route path="/about-us" element={<Main isCartOpen={isCartOpen}><AboutUs /> </Main>} />
-          <Route path="/tienda/:idcategory" element={<Main isCartOpen={isCartOpen}><Category /> </Main>}  />
-          <Route path="/product/:id" element={<Main isCartOpen={isCartOpen}><ItemDetailContainer /> </Main>} />
-          <Route path="/contact-us" element={<Main isCartOpen={isCartOpen}><ContactUs /> </Main>} />
-        </Routes>
-        <Footer />
+        <OpenCartProvider>
+          <NavBar>
+            <CartWidget />
+          </NavBar>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main>
+                  <Home />
+                </Main>
+              }
+            />
+            <Route
+              path="/about-us"
+              element={
+                <Main>
+                  <AboutUs />
+                </Main>
+              }
+            />
+            <Route
+              path="/tienda/:idcategory"
+              element={
+                <Main>
+                  <Category />
+                </Main>
+              }
+            />
+            <Route
+              path="/product/:id"
+              element={
+                <Main>
+                  <ItemDetailContainer />
+                </Main>
+              }
+            />
+            <Route
+              path="/contact-us"
+              element={
+                <Main>
+                  <ContactUs />
+                </Main>
+              }
+            />
+          </Routes>
+          <Footer />
+        </OpenCartProvider>
       </BrowserRouter>
     </>
   );
