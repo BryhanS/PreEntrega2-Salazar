@@ -1,16 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
-
+import { Logo } from "./Logo";
 // eslint-disable-next-line react/prop-types
-const NavBar = ({children}) => {
+const NavBar = ({ children }) => {
   return (
-
     <header className="header-container sticky-top">
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
-          <a className="navbar-brand logo-box">
-            <img className="logo-img" src="/img/logo.png" alt="logo" />
-            <span>Santa Maria</span>
-          </a>
+          <Logo />
           <button
             className="navbar-toggler"
             type="button"
@@ -38,13 +34,32 @@ const NavBar = ({children}) => {
                 </NavLink>
               </li>
               <li className="nav-item dropdown">
-                <NavLink to="/category" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                <NavLink
+                  to="/category"
+                  className="nav-link dropdown-toggle"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
                   Tienda
                 </NavLink>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><Link className="dropdown-item" to="/tienda/all">All</Link></li>
-                  <li><Link className="dropdown-item" to="/tienda/diario">Diarios</Link></li>
-                  <li><Link className="dropdown-item" to="/tienda/especiales">Especiales</Link></li>
+                  <li>
+                    <Link className="dropdown-item" to="/tienda/all">
+                      All
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/tienda/diario">
+                      Diarios
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/tienda/especiales">
+                      Especiales
+                    </Link>
+                  </li>
                 </ul>
               </li>
               <li className="nav-item">
@@ -60,7 +75,6 @@ const NavBar = ({children}) => {
         </div>
       </nav>
     </header>
-
   );
 };
 
