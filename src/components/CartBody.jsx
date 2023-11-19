@@ -2,17 +2,24 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
+import Trash from "../Icons/Trash";
 
 import { OpenCartContext } from "../context/OpenCartContext";
 import CartList from "./CartList";
 
 const CartBody = () => {
-  const { cartArray, total, deleteProduct } = useContext(CartContext);
+  const { cartArray, total, deleteProduct, emptyCart } =
+    useContext(CartContext);
   const { handleCloseCart } = useContext(OpenCartContext);
 
   return (
     <div id="idCart" className="cart">
-      <h2>Tus compras</h2>
+      <div>
+        <h2>Tus compras </h2>
+        <button className="mx-5" onClick={() => emptyCart()}>
+          <Trash />
+        </button>
+      </div>
       <ul id="cartList" className="listCart">
         {cartArray.map((product, id) => (
           <CartList
