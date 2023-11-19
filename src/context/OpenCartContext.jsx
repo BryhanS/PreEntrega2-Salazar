@@ -9,9 +9,13 @@ export const OpenCartProvider = ({ children }) => {
     setIsCartOpen((isCartOpen) => !isCartOpen);
   }
 
+  function handleCloseCart() {
+    setIsCartOpen(false);
+  }
+
   return (
     <OpenCartContext.Provider
-      value={{ isCartOpen, setIsCartOpen, handleOpenCart }}
+      value={{ isCartOpen, setIsCartOpen, handleOpenCart, handleCloseCart }}
     >
       {children}
     </OpenCartContext.Provider>

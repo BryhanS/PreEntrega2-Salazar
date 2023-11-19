@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { OpenCartContext } from "../context/OpenCartContext";
 import CartList from "./CartList";
 
 const CartBody = () => {
   const { cartArray, total } = useContext(CartContext);
+  const { handleCloseCart } = useContext(OpenCartContext);
 
-  console.log(`hola ${total}`);
   return (
     <div id="idCart" className="cart">
       <h2>Tus compras</h2>
@@ -20,7 +21,11 @@ const CartBody = () => {
         <div id="totalSum" className="total">
           {total.toFixed(2)}
         </div>
-        <div id="closeShopping" className="btn btn-danger">
+        <div
+          id="closeShopping"
+          className="btn btn-danger"
+          onClick={() => handleCloseCart()}
+        >
           Close
         </div>
         <div id="endBuy" className="shopping">
