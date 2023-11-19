@@ -1,14 +1,32 @@
 /* eslint-disable react/prop-types */
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 import CartList from "./CartList";
-const CartBody = ({ onCartList }) => {
+
+const CartBody = () => {
+  const { cartArray, total } = useContext(CartContext);
+
+  console.log(`hola ${total}`);
   return (
     <div id="idCart" className="cart">
       <h2>Tus compras</h2>
-      {/* <ul id="cartList" className="listCart">
-        {onCartList.map((product) => (
-          <CartList item={product} key={product.id} />
+      <ul id="cartList" className="listCart">
+        {cartArray.map((product, id) => (
+          <CartList item={product.item} cantidad={product.quantity} key={id} />
         ))}
-      </ul> */}
+      </ul>
+
+      <div className="checkout">
+        <div id="totalSum" className="total">
+          {total.toFixed(2)}
+        </div>
+        <div id="closeShopping" className="btn btn-danger">
+          Close
+        </div>
+        <div id="endBuy" className="shopping">
+          Finaliza tu Compra
+        </div>
+      </div>
     </div>
   );
 };

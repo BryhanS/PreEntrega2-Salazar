@@ -1,7 +1,23 @@
 /* eslint-disable react/prop-types */
 import CountController from "../../components/CountController";
+import { useState, useContext } from "react";
+import { CartContext } from "../../context/CartContext";
+import { OpenCartContext } from "../../context/OpenCartContext";
 
-const ItemDetail = ({ nombre, precio, imagen, altinf }) => {
+const ItemDetail = ({ id, nombre, precio, imagen, altinf }) => {
+  const [quantity, setQuantity] = useState(0);
+  const { addToCart } = useContext(CartContext);
+  const { setIsCartOpen } = useContext(OpenCartContext);
+
+  function handleQuantity(quantity) {
+    setQuantity(quantity);
+
+    const item = { id, nombre, precio, imagen };
+
+    addToCart(item, quantity);
+    setIsCartOpen(true);
+  }
+
   return (
     <>
       <div className="container">
@@ -26,8 +42,7 @@ const ItemDetail = ({ nombre, precio, imagen, altinf }) => {
               Precio: S/ {Number(precio).toFixed(2)}
             </h3>
             <div className="d-flex flex-direction-column">
-              <CountController />
-              <button className="">Agregar al Carrito</button>
+              <CountController onHandleCart={handleQuantity} />
             </div>
           </div>
         </div>

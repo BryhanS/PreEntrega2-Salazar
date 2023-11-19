@@ -1,11 +1,16 @@
 import Cartsvg from "../Icons/Cartsvg";
 import { useContext } from "react";
-import {OpenCartContext} from "../context/OpenCartContext";
-const CartWidget = () => {
+import { OpenCartContext } from "../context/OpenCartContext";
+import { CartContext } from "../context/CartContext";
 
-  const {isCartOpen,handleOpenCart} = useContext(OpenCartContext)
+const CartWidget = () => {
+  const { isCartOpen, handleOpenCart } = useContext(OpenCartContext);
+  const { quantityTotal } = useContext(CartContext);
   return (
-    <div style={{ position: "relative" }} onClick={()=> handleOpenCart(isCartOpen)}>
+    <div
+      style={{ position: "relative" }}
+      onClick={() => handleOpenCart(isCartOpen)}
+    >
       <Cartsvg />
       <strong
         style={{
@@ -15,7 +20,7 @@ const CartWidget = () => {
           fontSize: "large",
         }}
       >
-        3
+        {quantityTotal > 0 ? quantityTotal : ""}
       </strong>
     </div>
   );

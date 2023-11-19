@@ -1,13 +1,12 @@
 /* eslint-disable react/prop-types */
-// import { CountController } from "./CountController";
 
-const CartList = ({ item }) => {
+const CartList = ({ item, cantidad }) => {
   return (
     <li>
-      <img src={`./img/${item.imagen}`} alt={item.altinf} />
-      {/* <CountController /> */}
+      <img src={`../img/${item.imagen}`} alt={item.altinf} />
+      <p className="precio">Qt: {cantidad}</p>
       <p className="precio">s/ {item.precio.toFixed(2)}</p>
-      <p className="monto">s/ {(item.precio * item.cantidad).toFixed(2)}</p>
+      <p className="monto">s/ {(item.precio * cantidad).toFixed(2)}</p>
     </li>
   );
 };

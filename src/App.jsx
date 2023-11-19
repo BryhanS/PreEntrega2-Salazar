@@ -9,59 +9,62 @@ import ItemDetailContainer from "./pages/CategoryShop/ItemDetailContainer";
 import CartWidget from "./components/CartWidget";
 import Main from "./components/Main";
 import { OpenCartProvider } from "./context/OpenCartContext";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <OpenCartProvider>
-          <NavBar>
-            <CartWidget />
-          </NavBar>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Main>
-                  <Home />
-                </Main>
-              }
-            />
-            <Route
-              path="/about-us"
-              element={
-                <Main>
-                  <AboutUs />
-                </Main>
-              }
-            />
-            <Route
-              path="/tienda/:idcategory"
-              element={
-                <Main>
-                  <Category />
-                </Main>
-              }
-            />
-            <Route
-              path="/product/:id"
-              element={
-                <Main>
-                  <ItemDetailContainer />
-                </Main>
-              }
-            />
-            <Route
-              path="/contact-us"
-              element={
-                <Main>
-                  <ContactUs />
-                </Main>
-              }
-            />
-          </Routes>
-          <Footer />
-        </OpenCartProvider>
+        <CartProvider>
+          <OpenCartProvider>
+            <NavBar>
+              <CartWidget />
+            </NavBar>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Main>
+                    <Home />
+                  </Main>
+                }
+              />
+              <Route
+                path="/about-us"
+                element={
+                  <Main>
+                    <AboutUs />
+                  </Main>
+                }
+              />
+              <Route
+                path="/tienda/:idcategory"
+                element={
+                  <Main>
+                    <Category />
+                  </Main>
+                }
+              />
+              <Route
+                path="/product/:id"
+                element={
+                  <Main>
+                    <ItemDetailContainer />
+                  </Main>
+                }
+              />
+              <Route
+                path="/contact-us"
+                element={
+                  <Main>
+                    <ContactUs />
+                  </Main>
+                }
+              />
+            </Routes>
+            <Footer />
+          </OpenCartProvider>
+        </CartProvider>
       </BrowserRouter>
     </>
   );

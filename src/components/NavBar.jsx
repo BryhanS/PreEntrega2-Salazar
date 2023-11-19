@@ -70,7 +70,6 @@ const NavBar = ({ children }) => {
             </ul>
 
             {children}
-            {/* <CartWidget onOpenCart={onOpenCart}/> */}
           </div>
         </div>
       </nav>

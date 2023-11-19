@@ -1,24 +1,21 @@
 import { useState, createContext } from "react";
 
-export const OpenCartContext = createContext(false)
+export const OpenCartContext = createContext(false);
 
+export const OpenCartProvider = ({ children }) => {
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
-export const OpenCartProvider = ({children}) =>{
+  function handleOpenCart() {
+    setIsCartOpen((isCartOpen) => !isCartOpen);
+  }
 
+  return (
+    <OpenCartContext.Provider
+      value={{ isCartOpen, setIsCartOpen, handleOpenCart }}
+    >
+      {children}
+    </OpenCartContext.Provider>
+  );
+};
 
-    const [isCartOpen, setIsCartOpen] = useState(false);
-
-    function handleOpenCart() {
-      setIsCartOpen((isCartOpen) => !isCartOpen);
-    }
-
-    return (
-        <OpenCartContext.Provider value={{isCartOpen, handleOpenCart}} >
-            {children}
-        </OpenCartContext.Provider>
-    )
-
-
-}
-
-export default OpenCartProvider
+export default OpenCartProvider;
