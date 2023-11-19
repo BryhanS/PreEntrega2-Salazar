@@ -5,7 +5,7 @@ import { OpenCartContext } from "../context/OpenCartContext";
 import CartList from "./CartList";
 
 const CartBody = () => {
-  const { cartArray, total } = useContext(CartContext);
+  const { cartArray, total, deleteProduct } = useContext(CartContext);
   const { handleCloseCart } = useContext(OpenCartContext);
 
   return (
@@ -13,7 +13,12 @@ const CartBody = () => {
       <h2>Tus compras</h2>
       <ul id="cartList" className="listCart">
         {cartArray.map((product, id) => (
-          <CartList item={product.item} cantidad={product.quantity} key={id} />
+          <CartList
+            item={product.item}
+            cantidad={product.quantity}
+            onDelete={deleteProduct}
+            key={id}
+          />
         ))}
       </ul>
 
