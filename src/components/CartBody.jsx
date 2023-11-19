@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
+
 import { OpenCartContext } from "../context/OpenCartContext";
 import CartList from "./CartList";
 
@@ -33,9 +35,14 @@ const CartBody = () => {
         >
           Close
         </div>
-        <div id="endBuy" className="shopping">
+        <Link
+          to={"/checkout"}
+          id="endBuy"
+          className="shopping"
+          onClick={() => handleCloseCart()}
+        >
           Finaliza tu Compra
-        </div>
+        </Link>
       </div>
     </div>
   );

@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { OpenCartProvider } from "./context/OpenCartContext";
+import { CartProvider } from "./context/CartContext";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -7,9 +9,8 @@ import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import ItemDetailContainer from "./pages/CategoryShop/ItemDetailContainer";
 import CartWidget from "./components/CartWidget";
+import Checkout from "./pages/Checkout/Checkout";
 import Main from "./components/Main";
-import { OpenCartProvider } from "./context/OpenCartContext";
-import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
@@ -61,6 +62,8 @@ function App() {
                   </Main>
                 }
               />
+
+              <Route path="/checkout" element={<Checkout />} />
             </Routes>
             <Footer />
           </OpenCartProvider>
