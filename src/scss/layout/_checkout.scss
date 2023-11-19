@@ -1,0 +1,17 @@
+#checkout {
+  h3 {
+    text-transform: capitalize;
+  }
+  .checkout-list {
+    #cartList {
+      justify-content: center;
+      li {
+        font-size: 15px;
+      }
+    }
+  }
+  #totalSum {
+    color: red;
+    font-weight: 800;
+  }
+}

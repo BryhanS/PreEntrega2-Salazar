@@ -35,6 +35,7 @@ const CartBody = () => {
         >
           Close
         </div>
+
         <Link
           to={"/checkout"}
           id="endBuy"
