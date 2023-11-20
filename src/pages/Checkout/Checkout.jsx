@@ -1,23 +1,86 @@
 import React from "react";
-import { useContext } from "react";
+import { useState, useContext } from "react";
+import { db } from "../../service/config";
+import { collection, addDoc, updateDoc, doc, getDoc } from "firebase/firestore";
 import { CartContext } from "../../context/CartContext";
 import CartList from "../../components/CartList";
+
 const Checkout = () => {
-  const { cartArray, deleteProduct, total } = useContext(CartContext);
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailConfirmation, setEmailConfirmation] = useState("");
+  const [error, setError] = useState("");
+  const [ordenId, setOrdenId] = useState("");
+
+  const { cartArray, deleteProduct, total, emptyCart } =
+    useContext(CartContext);
+
+  function handleForm(event) {
+    event.preventDefault();
+
+    if (!nombre || !apellido || !telefono || !email || !emailConfirmation) {
+      setError("Por favor completa todos los campos de informacion!!!");
+      return;
+    }
+
+    if (email !== emailConfirmation) {
+      setError("Los Campos del email no coinciden!!!");
+      return;
+    }
+
+    if (cartArray.length === 0) {
+      setError("Tienes que tener productos en tu carrito");
+      return;
+    }
+
+    const orden = {
+      items: cartArray.map((product) => ({
+        id: product.item.id,
+        nombre: product.item.nombre,
+        cantidad: product.quantity,
+      })),
+      total: total,
+      fecha: new Date(),
+      nombre,
+      apellido,
+      telefono,
+      email,
+    };
+
+    addDoc(collection(db, "ordenes"), orden)
+      .then((docRef) => {
+        setOrdenId(docRef.id);
+        emptyCart();
+        setNombre("");
+        setApellido("");
+        setTelefono("");
+        setEmail("");
+        setEmailConfirmation("");
+      })
+      .catch((error) => {
+        console.log("Error al crear la orden", error);
+        setError("Se produjo un error añ crear la orden!!!");
+      });
+  }
+
   return (
     <main>
       <section id="checkout" className="section-team">
         <h1>Checkout</h1>
 
         <div className="container d-flex mt-5">
-          <form className="checkout-form col-6">
+          <form onSubmit={handleForm} className="checkout-form col-6 mb-5">
             <h3>ingresa tus datos</h3>
-            <div className="form-floating mb-3">
+            <div className="form-floating mb-3 mt-5">
               <input
                 type="text"
                 className="form-control"
                 id="nombre"
                 placeholder="Nombres"
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
               />
               <label htmlFor="nombre">Nombres:</label>
             </div>
@@ -27,6 +90,8 @@ const Checkout = () => {
                 className="form-control"
                 id="apellido"
                 placeholder="Apellido"
+                value={apellido}
+                onChange={(e) => setApellido(e.target.value)}
               />
               <label htmlFor="apellido">Apellidos:</label>
             </div>
@@ -37,6 +102,8 @@ const Checkout = () => {
                 className="form-control"
                 id="telefono"
                 placeholder="telefono"
+                value={telefono}
+                onChange={(e) => setTelefono(e.target.value)}
               />
               <label htmlFor="telefono">Telefono:</label>
             </div>
@@ -46,9 +113,28 @@ const Checkout = () => {
                 className="form-control"
                 id="correo"
                 placeholder="name@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <label htmlFor="correo">Correo:</label>
             </div>
+
+            <div className="form-floating mb-3">
+              <input
+                type="email"
+                className="form-control"
+                id="correoConfirm"
+                placeholder="name@example.com"
+                value={emailConfirmation}
+                onChange={(e) => setEmailConfirmation(e.target.value)}
+              />
+              <label htmlFor="correoConfirm">Correo Confirmacion:</label>
+            </div>
+
+            <button type="submit" className="mt-5 bg-danger">
+              confirmar compra
+            </button>
+            <button className="mt-5">regresa al catalogo</button>
           </form>
 
           <div className="checkout-list col-6">
@@ -68,10 +154,9 @@ const Checkout = () => {
               {`Compra Total: S/. ${total.toFixed(2)}`}
             </div>
           </div>
-        </div>
 
-        <button className="mt-5">finalizar compra</button>
-        <button className="mt-5">regresa al catalogo</button>
+          <div>{error}</div>
+        </div>
       </section>
     </main>
   );
