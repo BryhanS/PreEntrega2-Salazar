@@ -1,17 +1,29 @@
 import ItemListContainer from "./CategoryShop/ItemListContainer";
 import { useEffect, useState } from "react";
-import { getProductsTop } from "../asyncmock";
+import { db } from "../service/config";
+import { collection, getDocs } from "firebase/firestore";
 // import Main from "../components/Main";
 
 const Home = () => {
   const [productsTop, setProductsTop] = useState([]);
 
+  // useEffect(() => {
+  //   getProductsTop(4).then((res) => setProductsTop(res));
+  // }, []);
+
   useEffect(() => {
-    getProductsTop(4).then((res) => setProductsTop(res));
+    const funtionProducts = collection(db, "productstop");
+    getDocs(funtionProducts).then((res) => {
+      const newProducts = res.docs.map((doc) => {
+        const data = doc.data();
+        return { id: doc.id, ...data };
+      });
+
+      setProductsTop(newProducts);
+    });
   }, []);
 
   return (
-
     <>
       <section id="carouselExampleIndicators" className="carousel slide">
         <div className="carousel-indicators">
@@ -113,9 +125,7 @@ const Home = () => {
           exigentes.
         </p>
       </section>
-
     </>
-
   );
 };
 

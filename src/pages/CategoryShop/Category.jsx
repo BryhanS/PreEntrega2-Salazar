@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getProducts, getProductsByCategory } from "../../asyncmock";
+import { db } from "../../service/config";
+import { collection, getDocs, query, where } from "firebase/firestore";
+
+// import { getProducts, getProductsByCategory } from "../../asyncmock";
 import ItemListContainer from "./ItemListContainer";
 
 const Category = () => {
@@ -8,11 +11,29 @@ const Category = () => {
 
   const { idcategory } = useParams();
 
+  // useEffect(() => {
+  //   const funtionProducts =
+  //     idcategory === "all" ? getProducts : getProductsByCategory;
+
+  //   funtionProducts(idcategory).then((res) => setProducts(res));
+  // }, [idcategory]);
+
   useEffect(() => {
     const funtionProducts =
-      idcategory === "all" ? getProducts : getProductsByCategory;
+      idcategory === "all"
+        ? collection(db, "products")
+        : query(
+            collection(db, "products"),
+            where("category", "==", idcategory)
+          );
 
-    funtionProducts(idcategory).then((res) => setProducts(res));
+    getDocs(funtionProducts).then((res) => {
+      const newProducts = res.docs.map((doc) => {
+        const data = doc.data();
+        return { id: doc.id, ...data };
+      });
+      setProducts(newProducts);
+    });
   }, [idcategory]);
 
   return (
@@ -29,3 +50,19 @@ const Category = () => {
 };
 
 export default Category;
+
+// useEffect(() => {
+//   const misProductos = idCategoria
+//     ? query(collection(db, "productos"), where("idCat", "==", idCategoria))
+//     : collection(db, "productos");
+
+//   getDocs(misProductos)
+//     .then((res) => {
+//       const nuevosProductos = res.docs.map((doc) => {
+//         const data = doc.data();
+//         return { id: doc.id, ...data };
+//       });
+//       setProductos(nuevosProductos);
+//     })
+//     .catch((error) => console.log(error));
+// }, [idCategoria]);
