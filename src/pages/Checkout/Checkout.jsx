@@ -1,9 +1,9 @@
-import React from "react";
 import { useState, useContext } from "react";
 import { db } from "../../service/config";
-import { collection, addDoc, updateDoc, doc, getDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { CartContext } from "../../context/CartContext";
 import CartList from "../../components/CartList";
+import { Link } from "react-router-dom";
 
 const Checkout = () => {
   const [nombre, setNombre] = useState("");
@@ -134,7 +134,9 @@ const Checkout = () => {
             <button type="submit" className="mt-5 bg-danger">
               confirmar compra
             </button>
-            <button className="mt-5">regresa al catalogo</button>
+            <Link to="/tienda/all">
+              <button className="mt-5">regresa al catalogo</button>
+            </Link>
           </form>
 
           <div className="checkout-list col-6">
