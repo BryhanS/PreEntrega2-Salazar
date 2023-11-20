@@ -43,14 +43,16 @@ const CartBody = () => {
           Close
         </div>
 
-        <Link
-          to={"/checkout"}
-          id="endBuy"
-          className="shopping"
-          onClick={() => handleCloseCart()}
-        >
-          Finaliza tu Compra
-        </Link>
+        {cartArray.length > 0 ? (
+          <Link
+            to={"/checkout"}
+            id="endBuy"
+            className="shopping"
+            onClick={() => handleCloseCart()}
+          >
+            Finaliza tu Compra
+          </Link>
+        ) : (<div className="shopping">Agrega Productos</div>)}
       </div>
     </div>
   );
