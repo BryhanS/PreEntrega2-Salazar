@@ -1,0 +1,20 @@
+
+.notfound{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 80vh;
+    h2{
+        margin-top: 20px;
+        font-size: 125px;
+    }
+    h3{
+        font-size: 45px;
+    }
+    p{
+        font-size: 30px;
+    }
+
+
+}

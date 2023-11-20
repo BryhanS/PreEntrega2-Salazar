@@ -11,6 +11,7 @@ import ItemDetailContainer from "./pages/CategoryShop/ItemDetailContainer";
 import CartWidget from "./components/CartWidget";
 import Checkout from "./pages/Checkout/Checkout";
 import Main from "./components/Main";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
               />
 
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/*" element={<NotFound />} />
             </Routes>
             <Footer />
           </OpenCartProvider>
