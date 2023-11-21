@@ -60,17 +60,23 @@ const Checkout = () => {
     addDoc(collection(db, "ordenes"), orden)
       .then((docRef) => {
         setOrdenId(docRef.id);
-        emptyCart();
-        setNombre("");
-        setApellido("");
-        setTelefono("");
-        setEmail("");
-        setEmailConfirmation("");
       })
       .catch((error) => {
         console.log("Error al crear la orden", error);
-        setError("Se produjo un error añ crear la orden!!!");
       });
+  }
+
+  if (ordenId.length > 0) {
+    Swal.fire(
+      `¡Gracias por tu compra! Sr o Sra ${apellido} Tu número de orden es: ${ordenId}`
+    );
+    setOrdenId("");
+    emptyCart();
+    setNombre("");
+    setApellido("");
+    setTelefono("");
+    setEmail("");
+    setEmailConfirmation("");
   }
 
   return (
