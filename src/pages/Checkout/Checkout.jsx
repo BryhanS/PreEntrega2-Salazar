@@ -4,6 +4,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { CartContext } from "../../context/CartContext";
 import CartList from "../../components/CartList";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Checkout = () => {
   const [nombre, setNombre] = useState("");
@@ -11,27 +12,34 @@ const Checkout = () => {
   const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");
   const [emailConfirmation, setEmailConfirmation] = useState("");
-  const [error, setError] = useState("");
   const [ordenId, setOrdenId] = useState("");
 
   const { cartArray, deleteProduct, total, emptyCart } =
     useContext(CartContext);
 
+  function sweetAlert(msg) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: msg,
+    });
+  }
+
   function handleForm(event) {
     event.preventDefault();
 
     if (!nombre || !apellido || !telefono || !email || !emailConfirmation) {
-      setError("Por favor completa todos los campos de informacion!!!");
+      sweetAlert("Por favor completa todos los campos de informacion!!!");
       return;
     }
 
     if (email !== emailConfirmation) {
-      setError("Los Campos del email no coinciden!!!");
+      sweetAlert("Los Campos del email no coinciden!!!");
       return;
     }
 
     if (cartArray.length === 0) {
-      setError("Tienes que tener productos en tu carrito");
+      sweetAlert("Tienes que tener productos en tu carrito");
       return;
     }
 
@@ -156,8 +164,6 @@ const Checkout = () => {
               {`Compra Total: S/. ${total.toFixed(2)}`}
             </div>
           </div>
-
-          <div>{error}</div>
         </div>
       </section>
     </main>
